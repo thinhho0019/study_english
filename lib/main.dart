@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study_english/ui/ui_logo.dart';
-import 'package:flutter_study_english/ui/ui_question.dart';
+import 'package:flutter_study_english/ui/ui_manghinhchinh.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +18,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: uiQuestion());
+        home: mainLogo());
   }
 }
