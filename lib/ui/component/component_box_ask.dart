@@ -8,11 +8,11 @@ class ComponentBoxAsk extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 30, left: 10, right: 10),
+      margin: EdgeInsets.only(top: 30, left: 10, right: 10, bottom: 20),
       padding: EdgeInsets.only(top: 5, left: 5, right: 5, bottom: 20),
       width: double.infinity,
       decoration: BoxDecoration(
-          color: Colors.amber, borderRadius: BorderRadius.circular(6)),
+          color: Colors.white, borderRadius: BorderRadius.circular(6)),
       child: Expanded(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

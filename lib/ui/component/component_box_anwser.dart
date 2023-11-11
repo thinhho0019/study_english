@@ -9,16 +9,20 @@ class ComponentBoxAnwser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            color: Colors.amber, borderRadius: BorderRadius.circular(5)),
-        margin: EdgeInsets.all(7),
+            color: Colors.white, borderRadius: BorderRadius.circular(5)),
+        margin: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 2),
         width: double.infinity,
         padding: EdgeInsets.all(7),
         child: RichText(
           text: TextSpan(children: [
             TextSpan(
-                text: number + ": ",
-                style: TextStyle(fontWeight: FontWeight.bold)),
-            TextSpan(text: descript)
+                text: number + ". ",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.black)),
+            TextSpan(
+                text: descript,
+                style: TextStyle(
+                    fontWeight: FontWeight.normal, color: Colors.black))
           ]),
         ));
   }

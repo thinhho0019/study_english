@@ -11,6 +11,7 @@ class uiQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(229, 247, 255, 1),
       body: SafeArea(
         child: Column(
           children: [
@@ -72,17 +73,13 @@ class uiQuestion extends StatelessWidget {
               child: Column(
                 children: [
                   ComponentBoxAnwser(
-                      number: "Question A",
-                      descript: "cái này là gì tại sao vậy."),
+                      number: "A", descript: "cái này là gì tại sao vậy."),
                   ComponentBoxAnwser(
-                      number: "Question B",
-                      descript: "cái này là gì tại sao vậy."),
+                      number: "B", descript: "cái này là gì tại sao vậy."),
                   ComponentBoxAnwser(
-                      number: "Question C",
-                      descript: "cái này là gì tại sao vậy."),
+                      number: "C", descript: "cái này là gì tại sao vậy."),
                   ComponentBoxAnwser(
-                      number: "Question D",
-                      descript: "cái này là gì tại sao vậy.")
+                      number: "D", descript: "cái này là gì tại sao vậy.")
                 ],
               ),
             ))

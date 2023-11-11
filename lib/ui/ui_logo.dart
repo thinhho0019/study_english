@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 class mainLogo extends StatelessWidget {
   const mainLogo({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
