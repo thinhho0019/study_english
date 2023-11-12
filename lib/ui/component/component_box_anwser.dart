@@ -1,29 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_english/provider/provider_chose_answer.dart';
+import 'package:provider/provider.dart';
 
 class ComponentBoxAnwser extends StatelessWidget {
   final number;
   final descript;
-  const ComponentBoxAnwser({super.key, this.number, this.descript});
+  final index;
+  final result;
+  final provider_anwser;
+  const ComponentBoxAnwser(
+      {super.key,
+      this.number,
+      this.descript,
+      this.index,
+      this.result,
+      this.provider_anwser});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(5)),
-        margin: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 2),
-        width: double.infinity,
-        padding: EdgeInsets.all(7),
-        child: RichText(
-          text: TextSpan(children: [
-            TextSpan(
-                text: number + ". ",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, color: Colors.black)),
-            TextSpan(
-                text: descript,
-                style: TextStyle(
-                    fontWeight: FontWeight.normal, color: Colors.black))
-          ]),
-        ));
+    return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      onTap: () {
+        provider_anwser.selectIndex(index);
+      },
+      child: Container(
+          decoration: BoxDecoration(
+              color: index == provider_anwser.getanwser &&
+                      result == provider_anwser.getanwser
+                  ? Colors.green
+                  : index == provider_anwser.getanwser &&
+                          result != provider_anwser.getanwser
+                      ? Colors.red
+                      : Colors.white,
+              borderRadius: BorderRadius.circular(5)),
+          margin: EdgeInsets.only(top: 10, left: 10, right: 10, bottom: 2),
+          width: double.infinity,
+          padding: EdgeInsets.all(7),
+          child: RichText(
+            text: TextSpan(children: [
+              TextSpan(
+                  text: number + ". ",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black)),
+              TextSpan(
+                  text: descript,
+                  style: TextStyle(
+                      fontWeight: FontWeight.normal, color: Colors.black))
+            ]),
+          )),
+    );
   }
 }

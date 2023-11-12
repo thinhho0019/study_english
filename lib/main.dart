@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_english/provider/provider_chose_answer.dart';
 import 'package:flutter_study_english/provider/provider_timenext.dart';
 import 'package:flutter_study_english/ui/ui_logo.dart';
 import 'package:flutter_study_english/ui/ui_manghinhchinh.dart';
+import 'package:flutter_study_english/ui/ui_question.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -14,7 +16,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider(create: (ctx) => providerTimeNext())],
+      providers: [
+        ChangeNotifierProvider(create: (ctx) => providerTimeNext()),
+        ChangeNotifierProvider(create: (ctx) => providerAnswer())
+      ],
       child: MaterialApp(
           title: 'Study_English',
           debugShowCheckedModeBanner: false,
@@ -22,7 +27,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: mainLogo()),
+          home: uiQuestion()),
     );
   }
 }
