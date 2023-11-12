@@ -1,69 +1,108 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_english/provider/provider_search.dart';
+import 'package:provider/provider.dart';
 
 class mainManghinhchinh extends StatelessWidget {
-  const mainManghinhchinh({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => ProviderSearch(),
+      child: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Color(0xFFE5F7FF),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(height: 60),
-              Text(
-                "Choose a topic",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 40),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.0)),
-                    filled: true,
-                    fillColor: Colors.white, // Màu nền trắng
-                    contentPadding: EdgeInsets.symmetric(horizontal: 20),
-                    suffixIcon: Icon(Icons.search), // Hoặc Text('Tìm kiếm')
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: 6,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.3),
-                            spreadRadius: 2,
-                            blurRadius: 5,
-                            offset: Offset(0, 3),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(height: 60),
+                    Text(
+                      "Choose a topic",
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height: 40),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 25),
+                      child: TextField(
+                        onChanged: (value) {
+                          Provider.of<ProviderSearch>(context, listen: false)
+                              .search(value);
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'Search',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30.0),
                           ),
-                        ],
-                      ),
-                      child: ListTile(
-                        title: Text(
-                          'Item $index',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.black),
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                          suffixIcon: Icon(Icons.search),
                         ),
                       ),
-                    );
-                  },
+                    ),
+                    SizedBox(height: 10),
+                    Expanded(
+                      child: Consumer<ProviderSearch>(
+                        builder: (context, provider, _) {
+                          List<String> danhSachDaTimKiem =
+                              provider.danhSachDaTimKiem;
+                          return ListView.builder(
+                            itemCount: danhSachDaTimKiem.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin: EdgeInsets.symmetric(
+                                    vertical: 5, horizontal: 20),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.3),
+                                      spreadRadius: 2,
+                                      blurRadius: 5,
+                                      offset: Offset(0, 3),
+                                    ),
+                                  ],
+                                ),
+                                child: ListTile(
+                                  title: Text(
+                                    danhSachDaTimKiem[index],
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+            Container(
+              color: Color(0xFFE5F7FF),
+              padding: EdgeInsets.all(10),
+              child: Text(
+                "TRUONG TH&THCS VINH KHUONG",
+                style: TextStyle(fontSize: 10, color: Color(0xFF09569a)),
+              ),
+            ),
+          ],
         ),
       ),
     );
