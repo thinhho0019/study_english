@@ -1,23 +1,35 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_study_english/model/category.dart';
 import 'package:flutter_study_english/ui/ui_question.dart';
+import 'package:flutter_study_english/utils/dbhelper.dart';
 import 'package:provider/provider.dart';
 
 class ProviderSearch extends ChangeNotifier {
   List<String> danhSach = [
-    'Food and drink',
-    'Family',
-    'Animal',
-    'Color',
-    'Subjects',
-    'Schooltings'
+    // 'Food and drink',
+    // 'Family',
+    // 'Animal',
+    // 'Color',
+    // 'Subjects',
+    // 'Schooltings'
   ];
 
   List<String> danhSachDaTimKiem = [];
 
   //khi vua mo app
   ProviderSearch() {
+    loadList();
+  }
+  void loadList() async {
+    DbHelper dp = DbHelper();
+    List<category> cate = await dp.getAllCategory();
+    print(cate);
+    cate.forEach((element) {
+      danhSach.add(element.name);
+    });
     danhSachDaTimKiem = danhSach;
+    notifyListeners();
   }
 
   //ham tim kiem

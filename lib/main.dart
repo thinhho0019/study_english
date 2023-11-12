@@ -4,9 +4,13 @@ import 'package:flutter_study_english/provider/provider_timenext.dart';
 import 'package:flutter_study_english/ui/ui_logo.dart';
 import 'package:flutter_study_english/ui/ui_manghinhchinh.dart';
 import 'package:flutter_study_english/ui/ui_question.dart';
+import 'package:flutter_study_english/utils/dbhelper.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  DbHelper dbHelper = DbHelper();
+  dbHelper.copyDatabase();
   runApp(const MyApp());
 }
 
@@ -27,7 +31,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: uiQuestion()),
+          home: mainLogo()),
     );
   }
 }
