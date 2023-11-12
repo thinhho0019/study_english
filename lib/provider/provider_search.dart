@@ -5,16 +5,22 @@ import 'package:provider/provider.dart';
 
 class ProviderSearch extends ChangeNotifier {
   List<String> danhSach = [
-    'Item 0',
-    'Item 1',
-    'Item 2',
-    'Item 3',
-    'Item 4',
-    'Item 5'
+    'Food and drink',
+    'Family',
+    'Animal',
+    'Color',
+    'Subjects',
+    'Schooltings'
   ];
 
   List<String> danhSachDaTimKiem = [];
 
+  //khi vua mo app
+  ProviderSearch() {
+    danhSachDaTimKiem = danhSach;
+  }
+
+  //ham tim kiem
   void search(String keyword) {
     if (keyword.isEmpty) {
       danhSachDaTimKiem = danhSach;
