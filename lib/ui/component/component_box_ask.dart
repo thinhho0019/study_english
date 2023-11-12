@@ -17,13 +17,7 @@ class ComponentBoxAsk extends StatelessWidget {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Number " + number.toString() + " :",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Text(title.toString())
-            ]),
+            children: [Text(title.toString())]),
       ),
     );
   }

@@ -41,6 +41,20 @@ class uiQuestion extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Container(
+                      margin: EdgeInsets.only(right: 10),
+                      padding: EdgeInsets.all(6),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.all(Radius.circular(4))),
+                      child: RichText(
+                        text: TextSpan(children: [
+                          TextSpan(
+                              text: "Continue",
+                              style: TextStyle(color: Colors.black)),
+                        ]),
+                      )),
                   // Container(
                   //     margin: EdgeInsets.only(right: 10),
                   //     padding: EdgeInsets.all(6),
