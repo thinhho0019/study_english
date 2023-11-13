@@ -20,8 +20,8 @@ class providerAnswer extends ChangeNotifier {
   void getQuestion(int id) async {
     DbHelper dp = DbHelper();
     cate = await dp.getAllAsk(id);
-    print(cate);
+    //print(cate);
     qt = cate[1];
-    // notifyListeners();
+    notifyListeners();
   }
 }
