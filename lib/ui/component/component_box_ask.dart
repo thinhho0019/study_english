@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ComponentBoxAsk extends StatelessWidget {
   final number;
@@ -20,7 +21,7 @@ class ComponentBoxAsk extends StatelessWidget {
             children: [
               Text(
                 "Question " + " :",
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: GoogleFonts.aBeeZee(fontWeight: FontWeight.bold),
               ),
               Text(title.toString())
             ]),

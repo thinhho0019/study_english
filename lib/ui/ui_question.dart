@@ -5,6 +5,7 @@ import 'package:flutter_study_english/provider/provider_chose_answer.dart';
 import 'package:flutter_study_english/ui/component/component_box_anwser.dart';
 import 'package:flutter_study_english/ui/component/component_box_ask.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class uiQuestion extends StatelessWidget {
@@ -64,11 +65,6 @@ class childUIQuestion extends StatelessWidget {
                       Expanded(
                         child: Container(
                           alignment: Alignment.center,
-                          child: Text(
-                            "cat",
-                            style: TextStyle(
-                                fontSize: 23, fontWeight: FontWeight.bold),
-                          ),
                         ),
                       ),
                       InkWell(
@@ -82,7 +78,10 @@ class childUIQuestion extends StatelessWidget {
                           decoration: BoxDecoration(
                               border: Border.all(color: Colors.black),
                               borderRadius: BorderRadius.circular(4)),
-                          child: Text("Next"),
+                          child: Text(
+                            "Next",
+                            style: GoogleFonts.aBeeZee(),
+                          ),
                         ),
                       )
                     ],
@@ -98,23 +97,42 @@ class childUIQuestion extends StatelessWidget {
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: list_anwser.length,
                       itemBuilder: (context, index) {
-                        return ComponentBoxAnwser(
-                          number: index == 0
-                              ? 'A'
-                              : index == 1
-                                  ? 'B'
-                                  : index == 2
-                                      ? 'C'
-                                      : 'D',
-                          descript: list_anwser[index],
-                          index: index,
-                          result: result,
-                          provider_anwser: provider_anwser,
+                        return Container(
+                          margin:
+                              EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                          decoration: BoxDecoration(
+                            color: Colors.white, // Màu nền của container
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey
+                                    .withOpacity(0.5), // Màu của BoxShadow
+                                spreadRadius: 2,
+                                blurRadius: 5,
+                                offset: Offset(0,
+                                    3), // Độ đổ bóng theo chiều ngang và chiều dọc
+                              ),
+                            ],
+                          ),
+                          child: ComponentBoxAnwser(
+                            number: index == 0
+                                ? 'A'
+                                : index == 1
+                                    ? 'B'
+                                    : index == 2
+                                        ? 'C'
+                                        : 'D',
+                            descript: list_anwser[index],
+                            index: index,
+                            result: result,
+                            provider_anwser: provider_anwser,
+                          ),
                         );
                       },
                     ),
                   ),
                 ),
+
                 // Expanded(
                 //     child: provider_anwser.getanwser != -1
                 //         ? Container(

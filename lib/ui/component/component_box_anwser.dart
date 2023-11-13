@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study_english/provider/provider_chose_answer.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ComponentBoxAnwser extends StatelessWidget {
@@ -42,11 +43,11 @@ class ComponentBoxAnwser extends StatelessWidget {
             text: TextSpan(children: [
               TextSpan(
                   text: number + ". ",
-                  style: TextStyle(
+                  style: GoogleFonts.aBeeZee(
                       fontWeight: FontWeight.bold, color: Colors.black)),
               TextSpan(
                   text: descript,
-                  style: TextStyle(
+                  style: GoogleFonts.aBeeZee(
                       fontWeight: FontWeight.normal, color: Colors.black))
             ]),
           )),

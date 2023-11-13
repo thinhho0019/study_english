@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_study_english/model/category.dart';
 import 'package:flutter_study_english/provider/provider_search.dart';
 import 'package:flutter_study_english/ui/ui_question.dart';
 import 'package:provider/provider.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class mainManghinhchinh extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => ProviderSearch(),
-      child: HomeScreen(),
+    return WillPopScope(
+      onWillPop: () async {
+        // Thoát ứng dụng khi bấm nút "Back"
+        SystemNavigator.pop();
+        return true; // Trả về true để thoát ứng dụng
+      },
+      child: ChangeNotifierProvider(
+        create: (_) => ProviderSearch(),
+        child: HomeScreen(),
+      ),
     );
   }
 }
@@ -33,8 +42,8 @@ class HomeScreen extends StatelessWidget {
                     SizedBox(height: 60),
                     Text(
                       "Choose a topic",
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                      style: GoogleFonts.aBeeZee(
+                          fontSize: 30, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(height: 40),
                     Padding(
@@ -93,7 +102,8 @@ class HomeScreen extends StatelessWidget {
                                   title: Text(
                                     danhSachDaTimKiem[index].name,
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(color: Colors.black),
+                                    style: GoogleFonts.aBeeZee(
+                                        color: Colors.black),
                                   ),
                                 ),
                               );
@@ -111,7 +121,8 @@ class HomeScreen extends StatelessWidget {
               padding: EdgeInsets.all(10),
               child: Text(
                 "TRUONG TH&THCS VINH KHUONG",
-                style: TextStyle(fontSize: 10, color: Color(0xFF09569a)),
+                style:
+                    GoogleFonts.aBeeZee(fontSize: 10, color: Color(0xFF09569a)),
               ),
             ),
           ],
