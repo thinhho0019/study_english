@@ -15,7 +15,7 @@ class ComponentBoxAsk extends StatelessWidget {
     var img;
     if (image != null) {
       // Only decode if blob is not null to prevent crashes
-      
+
       img = Uint8List.fromList(image);
     }
     return Container(
@@ -40,7 +40,7 @@ class ComponentBoxAsk extends StatelessWidget {
                   child: img != null
                       ? Image.memory(
                           img,
-                          height: 200,
+                          height: 120,
                           width: 200,
                         )
                       : SizedBox.shrink()),

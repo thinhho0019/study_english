@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_study_english/provider/provider_chose_answer.dart';
 import 'package:flutter_study_english/ui/component/component_box_anwser.dart';
@@ -27,7 +26,7 @@ class childUIQuestion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider_anwser = Provider.of<providerAnswer>(context, listen: false);
-    provider_anwser.getQuestion(id_cate);
+    provider_anwser.getQuestion(context, id_cate);
 
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 247, 255, 1),

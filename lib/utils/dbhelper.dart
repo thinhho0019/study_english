@@ -43,7 +43,7 @@ class DbHelper {
   Future<List<question>> getAllAsk(int id) async {
     Database db = await database;
     List<Map<dynamic, dynamic>> temp = await db.rawQuery(
-      "select * from question where id_category=?",
+      "select * from question where id_category= ?",
       [id],
     );
     print(temp);

@@ -7,10 +7,16 @@ class providerAnswer extends ChangeNotifier {
   int _anwserIndex = -1;
   int _indexList = -1;
   int get getanwser => _anwserIndex;
-
   List<question> cate = [];
-  late question qt =
-      question(id: -1, title: '1', a: '1', b: '1', c: '1', d: '1', result: '1',image: null);
+  late question qt = question(
+      id: -1,
+      title: '1',
+      a: '1',
+      b: '1',
+      c: '1',
+      d: '1',
+      result: '1',
+      image: null);
 
   void selectIndex(int index) {
     if (_anwserIndex == -1) {
@@ -20,14 +26,24 @@ class providerAnswer extends ChangeNotifier {
     }
   }
 
-  void getQuestion(int id) async {
+  void getQuestion(BuildContext context, int id) async {
     DbHelper dp = DbHelper();
     cate = await dp.getAllAsk(id);
-
+    if (cate.isEmpty) {
+      Navigator.pop(context);
+      return;
+    }
     qt = cate[0];
     _indexList = 0;
     print(cate.length);
     notifyListeners();
+  }
+
+  Future<bool> checkQuestion(int id) async {
+    DbHelper dp = DbHelper();
+    cate = await dp.getAllAsk(id);
+    if (cate == []) return false;
+    return true;
   }
 
   void nextQuestion(BuildContext context) {

@@ -28,8 +28,7 @@ class ComponentBoxAnwser extends StatelessWidget {
       },
       child: Container(
           decoration: BoxDecoration(
-              color: index == provider_anwser.getanwser &&
-                      result == provider_anwser.getanwser
+              color: index == result && provider_anwser.getanwser != -1
                   ? Colors.green
                   : index == provider_anwser.getanwser &&
                           result != provider_anwser.getanwser
