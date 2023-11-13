@@ -9,11 +9,11 @@ import 'package:provider/provider.dart';
 
 class uiQuestion extends StatelessWidget {
   uiQuestion({super.key});
-
   @override
   Widget build(BuildContext context) {
     final list_anwser = ['narutor', 'picked', 'micen', 'sencen'];
     final provider_anwser = Provider.of<providerAnswer>(context);
+    provider_anwser.getQuestion(1);
     final result = 2;
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 247, 255, 1),
@@ -41,37 +41,13 @@ class uiQuestion extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // Container(
-                  //     margin: EdgeInsets.only(right: 10),
-                  //     padding: EdgeInsets.all(6),
-                  //     decoration: BoxDecoration(
-                  //         color: Colors.white,
-                  //         border: Border.all(color: Colors.black),
-                  //         borderRadius: BorderRadius.all(Radius.circular(4))),
-                  //     child: RichText(
-                  //       text: TextSpan(children: [
-                  //         TextSpan(
-                  //             text: "Đ: ", style: TextStyle(color: Colors.red)),
-                  //         TextSpan(
-                  //             text: "12", style: TextStyle(color: Colors.red)),
-                  //         TextSpan(
-                  //             text: " - ",
-                  //             style: TextStyle(color: Colors.black)),
-                  //         TextSpan(
-                  //             text: "S: ",
-                  //             style: TextStyle(color: Colors.green)),
-                  //         TextSpan(
-                  //             text: "00",
-                  //             style: TextStyle(color: Colors.green)),
-                  //       ]),
-                  //     )),
                 ],
               ),
             ),
             ComponentBoxAsk(
               number: 1,
               title:
-                  "I’m afraid very few people know about the concert and almost no one will come. If only the posters _____________ on time.",
+                  context.watch<providerAnswer>().qt,
             ),
             Expanded(
               child: Container(
@@ -93,16 +69,7 @@ class uiQuestion extends StatelessWidget {
                       provider_anwser: provider_anwser,
                     );
                   },
-                )
-                // ComponentBoxAnwser(
-                // number: "A", descript: "cái này là gì tại sao vậy."),
-                // ComponentBoxAnwser(
-                //     number: "B", descript: "cái này là gì tại sao vậy."),
-                // ComponentBoxAnwser(
-                //     number: "C", descript: "cái này là gì tại sao vậy."),
-                // ComponentBoxAnwser(
-                //     number: "D", descript: "cái này là gì tại sao vậy.")
-                ,
+                ),
               ),
             ),
             Expanded(

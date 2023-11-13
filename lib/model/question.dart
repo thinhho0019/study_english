@@ -33,10 +33,10 @@ class question {
     return question(
         id: map['id'],
         title: map['title'],
-        a: map['a'],
-        b: map['b'],
-        c: map['c'],
-        d: map['d'],
+        a: map['A'],
+        b: map['B'],
+        c: map['C'],
+        d: map['D'],
         result: map['result']);
   }
 }

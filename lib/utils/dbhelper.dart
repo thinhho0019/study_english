@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_study_english/model/category.dart';
+import 'package:flutter_study_english/model/question.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
@@ -37,5 +38,16 @@ class DbHelper {
         await db.rawQuery("select * from category");
 
     return temp.map((e) => category.fromMap(e)).toList();
+  }
+
+  Future<List<question>> getAllAsk(int id) async {
+    Database db = await database;
+    List<Map<dynamic, dynamic>> temp = await db.rawQuery(
+      "select * from question where id_category=?",
+      [id],
+    );
+    List<question> cate = temp.map((e) => question.fromMap(e)).toList();
+    //print(cate);
+    return cate;
   }
 }
