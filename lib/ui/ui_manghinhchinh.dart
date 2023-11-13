@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study_english/model/category.dart';
 import 'package:flutter_study_english/provider/provider_search.dart';
+import 'package:flutter_study_english/ui/ui_question.dart';
 import 'package:provider/provider.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -58,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                     Expanded(
                       child: Consumer<ProviderSearch>(
                         builder: (context, provider, _) {
-                          List<String> danhSachDaTimKiem =
+                          List<category> danhSachDaTimKiem =
                               provider.danhSachDaTimKiem;
                           return ListView.builder(
                             itemCount: danhSachDaTimKiem.length,
@@ -79,8 +81,17 @@ class HomeScreen extends StatelessWidget {
                                   ],
                                 ),
                                 child: ListTile(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => uiQuestion(
+                                                id_cate:
+                                                    danhSachDaTimKiem[index]
+                                                        .id)));
+                                  },
                                   title: Text(
-                                    danhSachDaTimKiem[index],
+                                    danhSachDaTimKiem[index].name,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(color: Colors.black),
                                   ),

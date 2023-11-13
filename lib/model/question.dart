@@ -21,22 +21,22 @@ class question {
     return {
       'id': id,
       'title': title,
-      'a': a,
-      'b': b,
-      'c': c,
-      'd': d,
+      'A': a,
+      'B': b,
+      'C': c,
+      'D': d,
       'result': result
     };
   }
 
   factory question.fromMap(Map<dynamic, dynamic> map) {
     return question(
-        id: map['id'],
-        title: map['title'],
-        a: map['A'],
-        b: map['B'],
-        c: map['C'],
-        d: map['D'],
+        id: map['id'] ?? -1,
+        title: map['title'] ?? "",
+        a: map['A'] ?? "",
+        b: map['B'] ?? "",
+        c: map['C'] ?? "",
+        d: map['D'] ?? "",
         result: map['result']);
   }
 }
