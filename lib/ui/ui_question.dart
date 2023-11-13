@@ -90,6 +90,7 @@ class childUIQuestion extends StatelessWidget {
                 ComponentBoxAsk(
                   number: 1,
                   title: context.watch<providerAnswer>().qt.title,
+                  image: context.watch<providerAnswer>().qt.image,
                 ),
                 Expanded(
                   child: Container(

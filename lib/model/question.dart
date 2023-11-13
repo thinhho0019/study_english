@@ -1,3 +1,5 @@
+
+
 import 'package:flutter_study_english/model/category.dart';
 
 class question {
@@ -8,6 +10,7 @@ class question {
   final String c;
   final String d;
   final String result;
+  final dynamic image;
 
   question(
       {required this.id,
@@ -16,7 +19,8 @@ class question {
       required this.b,
       required this.c,
       required this.d,
-      required this.result});
+      required this.result,
+      required this.image});
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -25,7 +29,8 @@ class question {
       'B': b,
       'C': c,
       'D': d,
-      'result': result
+      'result': result,
+      'image': image
     };
   }
 
@@ -37,6 +42,7 @@ class question {
         b: map['B'] ?? "",
         c: map['C'] ?? "",
         d: map['D'] ?? "",
-        result: map['result']);
+        result: map['result'],
+        image: map['image'] ?? null);
   }
 }

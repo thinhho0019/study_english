@@ -10,7 +10,7 @@ class providerAnswer extends ChangeNotifier {
 
   List<question> cate = [];
   late question qt =
-      question(id: -1, title: '1', a: '1', b: '1', c: '1', d: '1', result: '1');
+      question(id: -1, title: '1', a: '1', b: '1', c: '1', d: '1', result: '1',image: null);
 
   void selectIndex(int index) {
     if (_anwserIndex == -1) {
