@@ -8,80 +8,125 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class uiQuestion extends StatelessWidget {
-  uiQuestion({super.key});
+  final int id_cate;
+  uiQuestion({super.key, required this.id_cate});
   @override
   Widget build(BuildContext context) {
-    final list_anwser = ['narutor', 'picked', 'micen', 'sencen'];
-    final provider_anwser = Provider.of<providerAnswer>(context);
-    provider_anwser.getQuestion(1);
-    final result = 2;
+    return ChangeNotifierProvider(
+      create: (context) => providerAnswer(),
+      child: childUIQuestion(id_cate: id_cate),
+    );
+  }
+}
+
+class childUIQuestion extends StatelessWidget {
+  final int id_cate;
+  childUIQuestion({super.key, required this.id_cate});
+
+  @override
+  Widget build(BuildContext context) {
+    final provider_anwser = Provider.of<providerAnswer>(context, listen: false);
+    provider_anwser.getQuestion(id_cate);
+
     return Scaffold(
       backgroundColor: Color.fromRGBO(229, 247, 255, 1),
       body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              // decoration:
-              //     BoxDecoration(border: Border.all(color: Colors.black)),
-              margin: EdgeInsets.only(top: 10),
-              child: Row(
-                children: [
-                  Container(
-                      margin: EdgeInsets.only(left: 10),
-                      height: 30,
-                      width: 30,
-                      child: SvgPicture.asset('assets/icon/Back.svg')),
-                  Expanded(
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: Text(
-                        "cat",
-                        style: TextStyle(
-                            fontSize: 23, fontWeight: FontWeight.bold),
+        child: Consumer<providerAnswer>(
+          builder: (context, provider, _) {
+            if (provider.qt.id == -1) {
+              return Center(child: CircularProgressIndicator());
+            }
+            final list_anwser = [
+              provider_anwser.qt.a,
+              provider_anwser.qt.b,
+              provider_anwser.qt.c,
+              provider_anwser.qt.d
+            ];
+            final result = int.tryParse(provider_anwser.qt.result);
+            return Column(
+              children: [
+                Container(
+                  // decoration:
+                  //     BoxDecoration(border: Border.all(color: Colors.black)),
+                  margin: EdgeInsets.only(top: 10),
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                            margin: EdgeInsets.only(left: 10),
+                            height: 30,
+                            width: 30,
+                            child: SvgPicture.asset('assets/icon/Back.svg')),
                       ),
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "cat",
+                            style: TextStyle(
+                                fontSize: 23, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          provider_anwser.nextQuestion(context);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(left: 10, right: 10),
+                          padding: EdgeInsets.only(
+                              left: 5, right: 5, top: 2, bottom: 2),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black),
+                              borderRadius: BorderRadius.circular(4)),
+                          child: Text("Next"),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                ComponentBoxAsk(
+                  number: 1,
+                  title: context.watch<providerAnswer>().qt.title,
+                ),
+                Expanded(
+                  child: Container(
+                    child: ListView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: list_anwser.length,
+                      itemBuilder: (context, index) {
+                        return ComponentBoxAnwser(
+                          number: index == 0
+                              ? 'A'
+                              : index == 1
+                                  ? 'B'
+                                  : index == 2
+                                      ? 'C'
+                                      : 'D',
+                          descript: list_anwser[index],
+                          index: index,
+                          result: result,
+                          provider_anwser: provider_anwser,
+                        );
+                      },
                     ),
                   ),
-                ],
-              ),
-            ),
-            ComponentBoxAsk(
-              number: 1,
-              title:
-                  context.watch<providerAnswer>().qt,
-            ),
-            Expanded(
-              child: Container(
-                child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: list_anwser.length,
-                  itemBuilder: (context, index) {
-                    return ComponentBoxAnwser(
-                      number: index == 0
-                          ? 'A'
-                          : index == 1
-                              ? 'B'
-                              : index == 2
-                                  ? 'C'
-                                  : 'D',
-                      descript: list_anwser[index],
-                      index: index,
-                      result: result,
-                      provider_anwser: provider_anwser,
-                    );
-                  },
                 ),
-              ),
-            ),
-            Expanded(
-                child: provider_anwser.getanwser != -1
-                    ? Container(
-                        margin: EdgeInsets.only(right: 10),
-                        padding: EdgeInsets.all(6),
-                        child: Text(
-                            "câu A sai bởi vì câu A đang trong tình thế ngàn cân theo sợi bún riêu cua"),
-                      )
-                    : SizedBox.shrink())
-          ],
+                // Expanded(
+                //     child: provider_anwser.getanwser != -1
+                //         ? Container(
+                //             margin: EdgeInsets.only(right: 10),
+                //             padding: EdgeInsets.all(6),
+                //             child: Text(
+                //                 "câu A sai bởi vì câu A đang trong tình thế ngàn cân theo sợi bún riêu cua"),
+                //           )
+                //         : SizedBox.shrink())
+              ],
+            );
+          },
         ),
       ),
     );

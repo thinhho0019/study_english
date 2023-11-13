@@ -6,7 +6,7 @@ import 'package:flutter_study_english/utils/dbhelper.dart';
 import 'package:provider/provider.dart';
 
 class ProviderSearch extends ChangeNotifier {
-  List<String> danhSach = [
+  List<category> danhSach = [
     // 'Food and drink',
     // 'Family',
     // 'Animal',
@@ -15,7 +15,7 @@ class ProviderSearch extends ChangeNotifier {
     // 'Schooltings'
   ];
 
-  List<String> danhSachDaTimKiem = [];
+  List<category> danhSachDaTimKiem = [];
 
   //khi vua mo app
   ProviderSearch() {
@@ -24,10 +24,7 @@ class ProviderSearch extends ChangeNotifier {
   void loadList() async {
     DbHelper dp = DbHelper();
     List<category> cate = await dp.getAllCategory();
-    print(cate);
-    cate.forEach((element) {
-      danhSach.add(element.name);
-    });
+    danhSach = cate;
     danhSachDaTimKiem = danhSach;
     notifyListeners();
   }
@@ -38,7 +35,8 @@ class ProviderSearch extends ChangeNotifier {
       danhSachDaTimKiem = danhSach;
     } else {
       danhSachDaTimKiem = danhSach
-          .where((item) => item.toLowerCase().contains(keyword.toLowerCase()))
+          .where(
+              (item) => item.name.toLowerCase().contains(keyword.toLowerCase()))
           .toList();
     }
     notifyListeners();

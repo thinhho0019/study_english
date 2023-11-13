@@ -46,8 +46,8 @@ class DbHelper {
       "select * from question where id_category=?",
       [id],
     );
+    print(temp);
     List<question> cate = temp.map((e) => question.fromMap(e)).toList();
-    //print(cate);
     return cate;
   }
 }

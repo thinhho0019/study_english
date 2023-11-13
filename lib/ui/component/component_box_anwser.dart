@@ -18,6 +18,7 @@ class ComponentBoxAnwser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("index:" + index.toString() + "result:" + result.toString());
     return InkWell(
       splashColor: Colors.transparent,
       highlightColor: Colors.transparent,

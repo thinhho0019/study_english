@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (ctx) => providerTimeNext()),
-        ChangeNotifierProvider(create: (ctx) => providerAnswer())
+        // ChangeNotifierProvider(create: (ctx) => providerAnswer())
       ],
       child: MaterialApp(
           title: 'Study_English',
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: uiQuestion()),
+          home: mainLogo()),
     );
   }
 }
