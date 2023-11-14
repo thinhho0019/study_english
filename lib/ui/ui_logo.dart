@@ -11,7 +11,13 @@ class mainLogo extends StatelessWidget {
         value.startTimer(context);
         return Scaffold(
           body: Container(
-            color: Color(0xFFE5F7FF), // Màu nền #e5f7ff
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('img/img_background.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
+            // color: Color(0xFFE5F7FF), // Màu nền #e5f7ff
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -20,7 +26,7 @@ class mainLogo extends StatelessWidget {
                     "Trường TH&THCS Vĩnh Khương",
                     style: TextStyle(fontSize: 15, color: Color(0xFF09569a)),
                   ),
-                  SizedBox(height: 50),
+                  SizedBox(height: 20),
                   Text(
                     "Study English",
                     style: TextStyle(fontSize: 40, color: Color(0xFF09569a)),

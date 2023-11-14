@@ -9,6 +9,7 @@ class ComponentBoxAnwser extends StatelessWidget {
   final index;
   final result;
   final provider_anwser;
+
   const ComponentBoxAnwser(
       {super.key,
       this.number,
@@ -25,6 +26,11 @@ class ComponentBoxAnwser extends StatelessWidget {
       highlightColor: Colors.transparent,
       onTap: () {
         provider_anwser.selectIndex(index);
+        //nếu chọn sai
+        if (index == provider_anwser.getanwser &&
+            result != provider_anwser.getanwser) {
+          provider_anwser.showMessageAgain(context);
+        }
       },
       child: Container(
           decoration: BoxDecoration(

@@ -76,4 +76,24 @@ class providerAnswer extends ChangeNotifier {
       },
     );
   }
+
+  void showMessageAgain(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Choose incorrectly'),
+          content: Text('Select again'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
