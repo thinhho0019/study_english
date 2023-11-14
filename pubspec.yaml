@@ -69,6 +69,8 @@ flutter:
     - assets/icon/Back.svg
     - assets/db_english.db
     - img/img_background.jpg
+    - img/img_avata.jpg
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
