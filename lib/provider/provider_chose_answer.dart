@@ -87,7 +87,9 @@ class providerAnswer extends ChangeNotifier {
           actions: <Widget>[
             TextButton(
               onPressed: () {
+                _anwserIndex = -1;
                 Navigator.of(context).pop(); // Close the dialog
+                notifyListeners();
               },
               child: Text('OK'),
             ),
