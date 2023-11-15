@@ -24,28 +24,26 @@ class ComponentBoxAsk extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(6)),
-      child: Expanded(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Question " + " :",
-                style: GoogleFonts.aBeeZee(fontWeight: FontWeight.bold),
-              ),
-              Text(title.toString()),
-              SizedBox(height: 10),
-              Container(
-                  alignment: Alignment.center,
-                  child: img != null
-                      ? Image.memory(
-                          img,
-                          height: 120,
-                          width: 200,
-                        )
-                      : SizedBox.shrink()),
-            ]),
-      ),
+      child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Question " + " :",
+              style: GoogleFonts.aBeeZee(fontWeight: FontWeight.bold),
+            ),
+            Text(title.toString()),
+            SizedBox(height: 10),
+            Container(
+                alignment: Alignment.center,
+                child: img != null
+                    ? Image.memory(
+                        img,
+                        height: 120,
+                        width: 200,
+                      )
+                    : SizedBox.shrink()),
+          ]),
     );
   }
 }

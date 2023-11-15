@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         // ChangeNotifierProvider(create: (ctx) => providerAnswer())
       ],
       child: MaterialApp(
-          title: 'Study_English',
+          title: 'Study English',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
